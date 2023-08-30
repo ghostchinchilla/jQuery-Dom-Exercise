@@ -1,0 +1,37 @@
+h1 {
+	text-align: left;
+	font-size: 30pt;
+	color: hotpink;
+	margin-bottom: 5px;
+	text-decoration: underline;
+}
+
+
+button {
+   color: hotpink; 
+}
+
+.submit-btn {
+    color: hotpink;
+}
+
+.movie-input {
+    background-color:pink;
+}
+
+.rating-input {
+    background-color: pink;
+}
+
+ul li {
+    color: hotpink;
+  }
+
+  .input-div {
+    display: flex;    
+  }
+
+
+
+  
+

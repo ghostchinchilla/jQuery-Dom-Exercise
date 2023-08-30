@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title" class="text-center">Movie Ratings :)</h1>
+    <button class="a-btn">Sort Alphabetically</button>
+    <button class="r-btn">Sort by Rating</button>
+    <hr>
+    <form class="form">
+        <input class="movie-input" type="text" minlength="2" placeholder="Movie Title">
+        <input class="rating-input" type="number" min="0" max="10" placeholder="Rating">
+        <input class="submit-btn" type="submit">
+    </form>
+
+    <ul class="list"></ul>
+
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
+
+    <!-- <script src="app.js"></script> -->
+
+<script>
+
+$(".submit-btn").on("click", function(){
+    let movie= $(".movie-input").val(); 
+    let rating= $(".rating-input").val();
+    let inputs= (`${movie} - ${rating}`);
+
+    
+    let movieDiv= `<div class="movie"> ${movie} - </div>`
+    let ratingDiv= `<div class="rating"> ${rating}</div>`
+    let inputDiv= `<div class="input-div">${movieDiv} ${ratingDiv} <button>x</button></div>`
+
+
+   
+
+    $(".list").append(`<li>${inputDiv}</li>`);
+    event.preventDefault();
+    $(".form")[0].reset();
+
+    $('ul').on("click", "li button", e => $(e.target).closest('li').remove());
+});
+
+
+
+$(".a-btn").on("click", function(){
+    // let ul= $(".movie-input").val();
+    let mylist = $(".list");
+  let listitems = mylist.children('li').get();
+  listitems.sort(function(a, b) {
+    return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+  })
+  $.each(listitems, function(idx, itm) {
+    mylist.append(itm);
+  });
+});
+
+
+
+
+$(".r-btn").on("click", function(){
+  let mylist = $(".list");
+  let listitems = mylist.children('li').get();
+  listitems.sort(function(a, b) {
+  
+    return a.querySelector(".rating").innerText.localeCompare(b.querySelector(".rating").innerText);
+  })
+  $.each(listitems, function(idx, itm) {
+    mylist.append(itm);
+  });
+});
+
+    
+  
+
+  
+
+
+
+
+ 
+</script>
+
+</body>
+</html>
+
